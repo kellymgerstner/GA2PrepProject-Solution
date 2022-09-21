@@ -55,11 +55,29 @@ public class Service {
 
     @Override
     public String toString(){
-        return
-                "\nName: " + this.name +
-                        "\nProvider: " + this.provider +
-                        "\nCategory: " + this.category +
-                        "\nLocation: " + this.location + "\n";
+        String output = "";
+
+        if(name == ""){
+            name = "Data not available";
+        }
+        if(provider.getValue() == "" || provider.getValue() == null){
+            provider.setValue("Data is not available.");
+        }
+        if(category.getValue() == "" || category.getValue() == null){
+            category.setValue("Data is not available.");
+        }
+        if(location.getValue() == "" || location.getValue() == null){
+            location.setValue("Data is not available.");
+        }
+
+        output = "**********" +
+                "\nName: " + name +
+                "\nProvider: " + provider +
+                "\nCategory: " + category +
+                "\nLocation: " + location +
+                "\n**********";
+        return output;
+
     }
 
 

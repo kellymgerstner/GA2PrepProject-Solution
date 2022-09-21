@@ -43,11 +43,37 @@ class ServiceTest {
 
     @Test
     public void testThatServiceBeginsAndEndsWithNewLine(){
-        assertEquals(service5.toString().charAt(0), service5.toString().charAt(service5.toString().length()-1));
+        String firstLine = service5.toString().substring(0,9);
+        String lastLine = service5.toString().substring(service5.toString().length()-10, service5.toString().length()-1);
+        assertEquals(firstLine, lastLine);
     }
 
     @Test
-    public void testToStringPrintsFields(){
+    public void testToStringPrintsFieldsInCorrectFormat(){
+        String output = "**********" +
+                "\nName: " + service3.getName() +
+                "\nProvider: " + service3.getProvider() +
+                "\nCategory: " + service3.getCategory() +
+                "\nLocation: " + service3.getLocation() +
+                "\n**********";
+
+        assertEquals(output, service3.toString());
+
+    }
+
+    @Test
+    public void testToStringHandlesEmptyFieldsWithDataNotAvailableResponse(){
+        service4.getProvider().setValue("");
+        service4.getLocation().setValue("");
+
+        String output = "**********" +
+                "\nName: " + service4.getName() +
+                "\nProvider: Data is not available." +
+                "\nCategory: " + service4.getCategory() +
+                "\nLocation: Data is not available." +
+                "\n**********";
+
+        assertEquals(output, service4.toString());
 
     }
 
