@@ -42,13 +42,6 @@ class ServiceTest {
     }
 
     @Test
-    public void testThatServiceBeginsAndEndsWithNewLine(){
-        String firstLine = service5.toString().substring(0,9);
-        String lastLine = service5.toString().substring(service5.toString().length()-10, service5.toString().length()-1);
-        assertEquals(firstLine, lastLine);
-    }
-
-    @Test
     public void testToStringPrintsFieldsInCorrectFormat(){
         String output = "**********" +
                 "\nName: " + service3.getName() +
@@ -77,5 +70,11 @@ class ServiceTest {
 
     }
 
+    @Test
+    public void testThatServiceBeginsAndEndsWithNewLine(){
+        String firstLine = service5.toString().substring(0,9);
+        String lastLine = service5.toString().substring(service5.toString().length()-10, service5.toString().length()-1);
+        assertEquals(firstLine, lastLine);
+    }
 
 }
